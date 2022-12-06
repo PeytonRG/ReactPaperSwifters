@@ -7,6 +7,17 @@
   src: url("./assets/fonts/Segment7Standard.otf") format("opentype");
 }
 
+html,
+body,
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+html {
+}
+
 body {
   background-color: #282c34;
 
@@ -15,16 +26,11 @@ body {
 }
 
 .scoreboard {
-  font-family: "Segment7Standard";
   justify-content: space-evenly;
   margin-top: 1rem;
   text-align: center;
 }
 
-.score {
-  border: 1px solid #fff;
-
-  h1 {
-    margin: 0.5rem 0 0 0;
-  }
+.scoreboard-font {
+  font-family: "Segment7Standard";
 }
