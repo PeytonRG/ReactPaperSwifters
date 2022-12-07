@@ -7,7 +7,7 @@ Rock, paper, scissors app implemented in both React and SwiftUI for Aspirent Lun
 ``` Swift
 @State private var message = ""
 ...
-Button("Set Message") {
+Button("Update Value") {
     message = "New value"
 }
 ```
@@ -15,9 +15,9 @@ Button("Set Message") {
 ``` TypeScript
 const [message, setMessage] = useState("");
 ...
-<Button onClick={(): void => setMessage("New value")}>
-    Set Message
-</Button>
+<button onClick={(): void => setMessage("New value")}>
+    Update Value
+</button>
 ```
 - Changes to your state variables in SwiftUI happen right away, so if you make a change then need to reference that new value somewhere else, you can safely do it. In React, this is not a given, so your code that will act upon that updated value should be wrapped in a `useEffect` hook that depends on your state value so it always gets the latest value.
 ``` TypeScript
@@ -28,9 +28,9 @@ useEffect(() => {
     // do something now that data has updated
 }, [searchTerm]);
 ...
-<Button onClick={(): void => setSearchTerm("New value")}>
+<button onClick={(): void => setSearchTerm("New value")}>
     Update Value
-</Button>
+</button>
 ```
 - In summary, state variables in React require special treatment, whereas SwiftUI state variables defined with the `@State` property wrapper can be treated just like any other variable as far as you are concerned.
 
@@ -43,16 +43,25 @@ const Parent: React.FC = (): => {
     ...
     <Child
         message={message}
+        setMessage={setMessage}
     />
 };
 
 // Child
 interface ChildProperties {
     message: string;
+    setMessage: () => void;
 }
 
 const Child: React.FC<ChildProperties> = ({ message }: ChildProperties): => {
-    return <div>{message}</div>;
+    return (
+        <div>
+            <p>{message}</p>
+            <button onClick=((): void => setMessage("New value")}>
+                Update Value
+            </button>
+        </div>
+    );
 }
 ```
 - In SwiftUI, an entirely different state mechanism is used. `@State` data is meant to be local to a view, and if it is passed to a child view, changes made in the child will not be reflected in the parent. This is because SwiftUI views are structs, which are value types in Swift. Classes, on the other hand, are reference types. Per the docs, they "are *not* copied when they’re assigned to a variable or constant, or when they’re passed to a function. Rather than a copy, a reference to the same existing instance is used." 
@@ -60,8 +69,8 @@ const Child: React.FC<ChildProperties> = ({ message }: ChildProperties): => {
 ``` Swift
 // Class
 class Book: ObservableObject {
-    @Published var title = ""
-    @Published var author = ""
+    @Published var title = "Title"
+    @Published var author = "Author"
 }
 
 // Parent
@@ -69,7 +78,10 @@ struct ParentView: View {
     @StateObject var book = Book()
     ...
     var body: some View {
-        ChildView(book: book)
+        NavigationView {
+            ChildView(book: book)
+                .navigationTitle(book.title)
+        }
     }
 }
 
@@ -80,8 +92,15 @@ struct ChildView: View {
         VStack {
             Text(book.title)
             Text(book.author)
+            
+            Spacer()
+            
+            Button("Update Title") {
+                // this update will be reflected in the ParentView as well
+                book.title = "New title"
+            }
         }
     }
 }
 ```
-- In summary, passing data from parent to child in React requires passing it as a prop that should be treated as immutable data. If you need to update it, do so via a callback. In SwiftUI, use a class that conforms to the `ObservableObject` protocol, manually tell SwiftUI which properties to watch for changes, and then make use of the `@StateObject` and `@ObservedObject` property wrappers. This means that in React, state "owned" by the parent should only be modified in the parent, but in SwiftUI, changes can be made from parent or child, so long as you're using the correct setup for your state.
+- In summary, passing data from parent to child in React requires passing it as a prop that should be treated as immutable data. If you need to update it, do so via a callback function. In SwiftUI, use a class that conforms to the `ObservableObject` protocol, manually tell SwiftUI which properties to watch for changes, and then make use of the `@StateObject` and `@ObservedObject` property wrappers. This means that in React, state "owned" by the parent should only be modified in the parent, but in SwiftUI, changes can be made from parent or child, so long as you're using the correct setup for your state.
