@@ -3,7 +3,7 @@ Rock, paper, scissors app implemented in both React and SwiftUI for Aspirent Lun
 
 ### For simple state, that is, state that exists only within the context of a single view, React and SwiftUI are very similar. They both manage your state variables for you, and any changes to your state will result in a redrawing of your component/view, and any of its children in the hierarchy, but the implementation does vary between the two in the following ways:
 
-- The `@State` property wrapper allows you to define a state variable, and SwiftUI abstracts away the value in memory elsewhere, but in a way that is totally seamless. As per Apple's documentation, "A State instance isn’t the value itself; it’s a means of reading and writing the value." As far as you are concerned, the interaction is like any other variable. Reassign away, because under the hood, SwiftUI is taking care of it for you.
+- The `@State` property wrapper allows you to define a state variable, and SwiftUI abstracts away the value in memory elsewhere, but in a way that is totally seamless. As per Apple's documentation, "A State instance isn’t the value itself; it’s a means of reading and writing the value." As far as you are concerned, the interaction is like any other variable. This means you can reassign to your heart's content, and use two-way binding with views such as text fields or with modifiers like alerts.
 ``` Swift
 @State private var message = ""
 ...
@@ -43,7 +43,7 @@ const Child: React.FC<ChildProperties> = (): => {
 ...
 }
 ```
-- In SwiftUI, an entirely different state mechanism is used. `@State` data is meant to be local to a view, and if it is passed to a child view, changes made in the child will not be reflected in the parent. This is because SwiftUI views are structs, which are value types in Swift. Classes, on the other hand, are reference types. Per the docs, they "are *not* copied when they’re assigned to a variable or constant, or when they’re passed to a function. Rather than a copy, a reference to the same existing instance is used." So instead, we move our state properties onto a class that conforms to the `ObservableObject` protocol. More of the management is up to you than before, but the gist is to make SwiftUI aware of changes to the properies via the `@Published` property wrapper. In the parent view, store your class in state with the `@StateObject` property wrapper. This wrapper declares that the parent view owns this data. Any child view that uses it will not instantiate its own instance of the class, but rather take it as an argument and define with the `@ObservedObject` property wrapper
+- In SwiftUI, an entirely different state mechanism is used. `@State` data is meant to be local to a view, and if it is passed to a child view, changes made in the child will not be reflected in the parent. This is because SwiftUI views are structs, which are value types in Swift. Classes, on the other hand, are reference types. Per the docs, they "are *not* copied when they’re assigned to a variable or constant, or when they’re passed to a function. Rather than a copy, a reference to the same existing instance is used." So instead, we move our state properties onto a class that conforms to the `ObservableObject` protocol. More of the management is up to you than before, but the gist is to make SwiftUI aware of changes to the properies via the `@Published` property wrapper. In the parent view, store your class in state with the `@StateObject` property wrapper. This wrapper declares that the parent view owns this data. Any child view that uses it will not instantiate its own instance of the class, but rather take it as an argument and define with the `@ObservedObject` property wrapper. This view does not own the data, but it can directly make changes to it that will be reflected in the parent view.
 ``` Swift
 // Class
 class Book: ObservableObject {
@@ -61,7 +61,7 @@ struct ParentView: View {
 }
 
 struct ChildView: View {
-    @ObservableObject var book = Book()
+    @ObservedObject var book = Book()
     ...
     var body: some View {
         VStack {
@@ -71,4 +71,4 @@ struct ChildView: View {
     }
 }
 ```
-
+- In summary, passing data from parent to child in React requires passing it as a prop that should be treated as immutable data. If you need to update it, do so via a callback. In SwiftUI, use a class that conforms to the `ObservableObject` protocol, manually tell SwiftUI which properties to watch for changes, and then make use of the `@StateObject` and `@ObservedObject` property wrappers. This means that in React, state "owned" by the parent can only be modified in the parent, but in SwiftUI, changes can be made from parent or child, so long as you're using the correct setup for your state.
