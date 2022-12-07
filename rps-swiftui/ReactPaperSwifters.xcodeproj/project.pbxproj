@@ -11,6 +11,12 @@
 		9C4D18C5293FBF7500440494 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D18C4293FBF7500440494 /* ContentView.swift */; };
 		9C4D18C7293FBF7600440494 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C4D18C6293FBF7600440494 /* Assets.xcassets */; };
 		9C4D18CA293FBF7600440494 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C4D18C9293FBF7600440494 /* Preview Assets.xcassets */; };
+		9C970916294017C6004F3886 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C970915294017C6004F3886 /* Move.swift */; };
+		9C970918294017FC004F3886 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C970917294017FC004F3886 /* Player.swift */; };
+		9C97091A2940181B004F3886 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9709192940181B004F3886 /* Result.swift */; };
+		9C97091C294022E7004F3886 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97091B294022E7004F3886 /* ScoreView.swift */; };
+		9C97091E294025F6004F3886 /* MoveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97091D294025F6004F3886 /* MoveButtonView.swift */; };
+		9C97092029403202004F3886 /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97091F29403202004F3886 /* Scores.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		9C4D18C4293FBF7500440494 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9C4D18C6293FBF7600440494 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C4D18C9293FBF7600440494 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9C970915294017C6004F3886 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		9C970917294017FC004F3886 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		9C9709192940181B004F3886 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		9C97091B294022E7004F3886 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		9C97091D294025F6004F3886 /* MoveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveButtonView.swift; sourceTree = "<group>"; };
+		9C97091F29403202004F3886 /* Scores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scores.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +63,10 @@
 		9C4D18C1293FBF7500440494 /* ReactPaperSwifters */ = {
 			isa = PBXGroup;
 			children = (
+				9C970924294038DB004F3886 /* Views */,
+				9C970923294038A8004F3886 /* Models */,
+				9C970914294017AA004F3886 /* Utilities */,
 				9C4D18C2293FBF7500440494 /* ReactPaperSwiftersApp.swift */,
-				9C4D18C4293FBF7500440494 /* ContentView.swift */,
 				9C4D18C6293FBF7600440494 /* Assets.xcassets */,
 				9C4D18C8293FBF7600440494 /* Preview Content */,
 			);
@@ -65,6 +79,34 @@
 				9C4D18C9293FBF7600440494 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9C970914294017AA004F3886 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				9C970915294017C6004F3886 /* Move.swift */,
+				9C970917294017FC004F3886 /* Player.swift */,
+				9C9709192940181B004F3886 /* Result.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		9C970923294038A8004F3886 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9C97091F29403202004F3886 /* Scores.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9C970924294038DB004F3886 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9C4D18C4293FBF7500440494 /* ContentView.swift */,
+				9C97091D294025F6004F3886 /* MoveButtonView.swift */,
+				9C97091B294022E7004F3886 /* ScoreView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +179,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C970918294017FC004F3886 /* Player.swift in Sources */,
+				9C97091A2940181B004F3886 /* Result.swift in Sources */,
 				9C4D18C5293FBF7500440494 /* ContentView.swift in Sources */,
+				9C97091E294025F6004F3886 /* MoveButtonView.swift in Sources */,
+				9C970916294017C6004F3886 /* Move.swift in Sources */,
+				9C97091C294022E7004F3886 /* ScoreView.swift in Sources */,
+				9C97092029403202004F3886 /* Scores.swift in Sources */,
 				9C4D18C3293FBF7500440494 /* ReactPaperSwiftersApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,8 +321,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,8 +352,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

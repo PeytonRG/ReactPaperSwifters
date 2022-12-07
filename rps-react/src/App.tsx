@@ -71,11 +71,11 @@ const App: React.FC = () => {
     }
 
     alert(
-      `The computer picked ${Move[computerMove].toLocaleLowerCase()}. ${getResultMessage(result)}`
+      `The computer picked ${Move[computerMove].toLocaleLowerCase()}. ${getResultString(result)}`
     );
   };
 
-  const getResultMessage = (result: Result): string => {
+  const getResultString = (result: Result): string => {
     switch (result) {
       case Result.Win: {
         return "You won!";
