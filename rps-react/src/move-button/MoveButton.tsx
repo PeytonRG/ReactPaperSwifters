@@ -4,13 +4,13 @@ import "./MoveButton.scss";
 import { Move } from "../utilities/Move";
 
 interface MoveButtonProperties {
-  icon: string;
+  text: string;
   move: Move;
   pickMove: (move: Move) => void;
 }
 
 const MoveButton: React.FC<MoveButtonProperties> = ({
-  icon,
+  text,
   move,
   pickMove,
 }: MoveButtonProperties) => {
@@ -18,7 +18,7 @@ const MoveButton: React.FC<MoveButtonProperties> = ({
     <Col className="text-center" xs={4}>
       <div>
         <Button className="move-button" variant="primary" onClick={(): void => pickMove(move)}>
-          <div className="fs-1">{icon}</div>
+          <div className="fs-1">{text}</div>
         </Button>
       </div>
     </Col>

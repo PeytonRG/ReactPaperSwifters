@@ -96,9 +96,9 @@ const App: React.FC = () => {
         <Score name="COMPUTER" playerType={Player.Computer} score={computerScore} />
       </Row>
       <Row className="mb-5">
-        <MoveButton icon="🪨" move={Move.Rock} pickMove={pickMove}></MoveButton>
-        <MoveButton icon="📃" move={Move.Paper} pickMove={pickMove}></MoveButton>
-        <MoveButton icon="✂️" move={Move.Scissors} pickMove={pickMove}></MoveButton>
+        <MoveButton text="🪨" move={Move.Rock} pickMove={pickMove}></MoveButton>
+        <MoveButton text="📃" move={Move.Paper} pickMove={pickMove}></MoveButton>
+        <MoveButton text="✂️" move={Move.Scissors} pickMove={pickMove}></MoveButton>
       </Row>
     </Container>
   );

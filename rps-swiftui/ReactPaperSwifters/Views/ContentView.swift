@@ -33,13 +33,13 @@ struct ContentView: View {
                 
                 HStack {
                     Spacer()
-                    MoveButtonView(scores: scores, icon: "🪨", move: .rock)
+                    MoveButtonView(scores: scores, text: "🪨", move: .rock)
                     Spacer()
                     Spacer()
-                    MoveButtonView(scores: scores, icon: "📃", move: .paper)
+                    MoveButtonView(scores: scores, text: "📃", move: .paper)
                     Spacer()
                     Spacer()
-                    MoveButtonView(scores: scores, icon: "✂️", move: .scissors)
+                    MoveButtonView(scores: scores, text: "✂️", move: .scissors)
                     Spacer()
                 }
             }

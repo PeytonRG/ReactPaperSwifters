@@ -14,11 +14,11 @@ struct MoveButtonView: View {
     @State private var alertMessage = ""
     @State private var showingResultAlert = false
     
-    let icon: String
+    let text: String
     let move: Move
     
     var body: some View {
-        Button(icon) {
+        Button(text) {
             pickMove(move: move)
         }
         .font(.largeTitle)
@@ -99,6 +99,6 @@ struct MoveButtonView: View {
 
 struct MoveButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        MoveButtonView(scores: Scores(), icon: "🪨", move: .rock)
+        MoveButtonView(scores: Scores(), text: "🪨", move: .rock)
     }
 }
