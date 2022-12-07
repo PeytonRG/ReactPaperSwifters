@@ -70,9 +70,7 @@ const App: React.FC = () => {
       }
     }
 
-    alert(
-      `The computer picked ${Move[computerMove].toLocaleLowerCase()}. ${getResultString(result)}`
-    );
+    alert(`The computer picked ${Move[computerMove].toLowerCase()}. ${getResultString(result)}`);
   };
 
   const getResultString = (result: Result): string => {

@@ -1,8 +1,8 @@
 //
-//  Score.swift
+//  ScoreView.swift
 //  ReactPaperSwifters
 //
-//  Created by Peyton Gasink on 12/6/22.
+//  Created by Peyton Gasink on 12/7/22.
 //
 
 import SwiftUI
@@ -22,8 +22,7 @@ struct ScoreView: View {
                 .font(.custom("DBLCDTempBlack", size: 45))
                 .frame(width: 120, height: 75)
                 .border(.primary)
-        }
-    }
+        }    }
 }
 
 struct ScoreView_Previews: PreviewProvider {
